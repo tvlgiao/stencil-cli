@@ -1,6 +1,6 @@
 [
   {
-    "name": "i18n.Test",
+    "name": "Test",
     "settings": [
       {
         "type": "heading",
@@ -18,24 +18,7 @@
       {
         "type": "font",
         "label": "Font",
-        "id": "font",
-        "options": [
-          {
-            "group": "Karla",
-            "label": "Karla",
-            "value": "Google_Karla_400"
-          },
-          {
-            "group": "Roboto",
-            "label": "Roboto",
-            "value": "Google_Roboto_400"
-          },
-          {
-            "group": "Source Sans Pro",
-            "label": "Source Sans Pro",
-            "value": "Google_Source+Sans+Pro_400"
-          }
-        ]
+        "id": "font"
       },
       {
         "type": "select",
@@ -63,9 +46,9 @@
         "id": "checkbox"
       },
       {
-        "type": "select",
-        "label": "Select",
-        "id": "select-two",
+        "type": "radio",
+        "label": "Radio",
+        "id": "radio",
         "options": [
           {
             "value": "first",
@@ -83,10 +66,9 @@
     "name": "Page",
     "settings": [
       {
-        "type": "paragraph",
+        "type": "string",
         "label": "A Title",
-        "id": "customizable_title",
-        "content": "hello world"
+        "id": "customizable_title"
       },
       {
         "type": "checkbox",
@@ -94,7 +76,7 @@
         "id": "front_matter_value"
       },
       {
-        "type": "input",
+        "type": "radio",
         "label": "Display That",
         "id": "display_that"
       }

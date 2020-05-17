@@ -14,7 +14,7 @@ function stripDomainFromCookies(cookies) {
     const fixedCookies = [];
 
     _.forEach(cookies, function(cookie) {
-        fixedCookies.push(cookie.replace(/(?:;\s)?domain=(?:.+?)(;|$)/, '$1').replace('; SameSite=none', ''));
+        fixedCookies.push(cookie.replace(/(?:;\s)?domain=(?:.+?)(;|$)/, '$1'));
     });
 
     return fixedCookies;

@@ -246,10 +246,6 @@ internals.parseResponse = function (bcAppData, request, response, responseArgs, 
                     response: response,
                 }, internals.cacheTTL);
 
-                if (response.headers['set-cookie']) {
-                    response.headers['set-cookie'] = Utils.stripDomainFromCookies(response.headers['set-cookie']);
-                }
-
                 return callback(null, internals.getPencilResponse(data, request, response, configuration));
             });
         }
@@ -394,7 +390,7 @@ internals.getPencilResponse = function (data, request, response, configuration) 
     data.context.settings.theme_version_id = Utils.int2uuid(1);
     data.context.settings.theme_config_id = Utils.int2uuid(request.app.themeConfig.variationIndex + 1);
     data.context.settings.theme_session_id = null;
-    data.context.settings.maintenance = {secure_path: `http://localhost:${internals.options.stencilServerPort}`};
+    data.context.settings.maintenance = {secure_path: `http://localhost:${internals.options.stencilEditorPort}`};
 
     return new Responses.PencilResponse({
         template_file: internals.getTemplatePath(request.path, data),

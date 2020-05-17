@@ -15,6 +15,8 @@ const internals = {
         cdnAssets: '/stencil/{versionId}/{fileName*}',
         cssFiles: '/stencil/{versionId}/css/{fileName}.css',
         favicon: '/favicon.ico',
+        stencilEditor: '/stencil-editor',
+        updateParam: '/stencil-editor/update-param',
         graphQL: '/graphql',
     },
 };

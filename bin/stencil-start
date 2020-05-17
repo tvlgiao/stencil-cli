@@ -37,6 +37,7 @@ Program
     .option('-v, --variation [name]', 'Set which theme variation to use while developing')
     .option('-t, --test', 'Enable QA mode which will bundle all javascript for speed to test locally')
     .option('--tunnel [name]', 'Create a tunnel URL which points to your local server that anyone can use.')
+    .option('-e, --theme-editor', 'Run Theme Editor server')
     .option('-n, --no-cache', 'Turns off caching for API resource data per storefront page. The cache lasts for 5 minutes before automatically refreshing.')
     .parse(process.argv);
 
@@ -151,6 +152,8 @@ function startServer() {
     var params = {
         dotStencilFile: dotStencilFile,
         variationIndex: themeConfig.variationIndex || 0,
+        stencilEditorEnabled: Program.themeEditor,
+        stencilEditorPort: Program.themeEditorPort || 8181,
         useCache: Program.cache,
         themePath: themePath,
     };
@@ -160,7 +163,6 @@ function startServer() {
             '/assets',
             '/templates',
             '/lang',
-            '/.config'
         ];
         var watchIgnored = [
             '/assets/scss',
@@ -190,18 +192,6 @@ function startServer() {
                     return console.error(e);
                 }
 
-                Bs.reload();
-            }
-        });
-
-        Bs.watch('.config/storefront.json', (event, file) => {
-            if (event === 'change') {
-                console.log("storefront json changed");
-                Bs.emitter.emit("storefront_config_file:changed", {
-                    event: event,
-                    path: file,
-                    namespace: ""
-                });
                 Bs.reload();
             }
         });
